@@ -27,6 +27,6 @@ models.py
 views.py
 urls.py
 
-Prerequisites: D
+Prerequisites:
 
 Describe here the authentication and authorisation process at Google
