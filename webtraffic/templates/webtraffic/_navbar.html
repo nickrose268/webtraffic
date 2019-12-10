@@ -1,0 +1,71 @@
+{% load static %}
+<!-- try sticky-top -->
+
+
+<div class="container-fluid sticky-top bb-color-2">
+
+  <nav class="navbar navbar-expand-md navbar-light bg-light bb-color-2 bb-navbar">
+      <a class="navbar-brand nav-link bb-nav-link" href="{% url 'webtraffic:home' %}"><h2>Web Traffic Reports</h2></a>
+
+    <div class="navbar-toggler-right">
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbar" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+              </button>
+    </div>
+
+
+    <div class="collapse navbar-collapse flex-column " id="navbar">
+
+      <!-- <ul class="navbar-nav  w-100 justify-content-center px-3"> -->
+      <ul class="navbar-nav ml-auto px-3">
+
+        <li class="nav-item dropdown mx-5">
+          <a class="nav-link dropdown-toggle bb-nav-link" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Show data views
+          </a>
+          <div class="dropdown-menu dropdown-menu-right bb-dropdown" aria-labelledby="navbarDropdownMenuLink">
+            <a class="dropdown-item" href="{% url 'webtraffic:view_show' view='traffic' %}">Traffic summary</a>
+            <a class="dropdown-item" href="{% url 'webtraffic:view_show' view='geo' %}">Geo & demographics</a>
+            <a class="dropdown-item" href="{% url 'webtraffic:view_show' view='tech' %}">User equipment</a>
+            <a class="dropdown-item" href="{% url 'webtraffic:view_show' view='site' %}">Site useage</a>
+              <a class="dropdown-item" href="{% url 'webtraffic:panda_show' view='geo' %}">Pandas</a>
+          </div>
+        </li>
+
+        <li class="nav-item mx-5">
+          <a class="nav-link bb-nav-link" href="{% url 'bbhome:home' %}">Baby Bird Home</a>
+        </li>
+
+        <li class="nav-item mx-5">
+          <a class="nav-link bb-nav-link" href="{% url 'webtraffic:userinfo_show' %}">Userinfo</a>
+        </li>
+
+        <li class="nav-item mx-5">
+          <a class="nav-link bb-nav-link" href="{% url 'webtraffic:ga_show' %}">Tabulated lookups</a>
+        </li>
+
+        <li class="nav-item mx-5">
+          <a class="nav-link bb-nav-link" href="{% url 'webtraffic:ga_list' %}">Add data fields</a>
+        </li>
+
+      </ul>
+
+      <ul class="navbar-nav ml-auto px-3">
+
+        {% if user.is_authenticated %}
+        <span class="nav-item nav-link active">
+          You are logged in as {{ user }} :
+        </span>
+        <li class="nav-item mx-5">
+          <a class="nav-link bb-nav-link" href="{% url 'accounts:logout' %}">Logout</a>
+        </li>
+          <li class="nav-item mx-5">
+          <a class="nav-link bb-nav-link" href="{% url 'accounts:login' %}">Login</a>
+        </li>
+        {% endif %}
+
+      </ul>
+
+    </div>
+  </nav>
+</div>

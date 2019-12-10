@@ -1,0 +1,81 @@
+
+:root {
+  --body-bg-color:  #ecf9ec;
+  --dark-txt-color: #0c270c;
+  --light-txt-color: #ecf9ec;
+  --primary-bg-color: #37ae37;
+  --secondary-bg-color: #ecf9ec;
+  --tertiary-bg-color: #00e6b8;
+  --contrast-bg-color: #0077b3;
+  --primary-bg-sub-color: #8bda8b;
+  --bb-card-1-bg-color: #ccfff5;
+  --bb-card-1-hover-color: #ccfff5;
+  --bb-hover-color: #00e6b8;
+  --font-family: 'Source Sans Pro', sans-serif;
+}
+
+/* local styles bbhome */
+svg {
+  width: 100%;
+  height: auto;
+}
+
+.bb-hex {
+  transition: .1s ease;
+}
+
+ .bb-hex g {
+    pointer-events: bounding-box;
+    opacity: 1;
+}
+
+.bb-hex g:hover {
+    opacity: 0.6;
+}
+
+.bb-logo-img {
+  border-radius: 0.5rem;
+  width: 10rem;
+  height: 10rem;
+  margin-right: 1rem;
+  padding-right: 0rem;
+}
+
+.bb-logo-img:hover {
+background-color: var(--tertiary-bg-color)!important;
+}
+
+.bb-navbar {
+  background-color: var(--secondary-bg-color)!important;
+  color: var(--navbar-txt-color)!important;
+  font-size: 2rem;
+  border-bottom: 2px solid #730099;
+}
+
+.bb-img-container {
+  position: relative;
+}
+
+.bb-img-overlay {
+position: absolute;
+top: 0;
+bottom: 0;
+left: 0;
+right: 0;
+height: 100%;
+width: 100%;
+opacity: 0;
+transition: .5s ease;
+background-color: var(--tertiary-bg-color)!important;
+border-radius: 7rem;
+}
+
+.bb-img-container:hover .bb-img-overlay {
+opacity: 0.5;
+}
+
+@media (max-width: 500px) {
+  .bb-top-card {
+     height: 500px;
+   }
+}

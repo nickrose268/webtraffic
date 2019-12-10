@@ -1,0 +1,72 @@
+{% extends "webtraffic/bb_base.html" %}
+{% load static %}
+{% load bootstrap3 %}
+
+
+{% block content %}
+
+{% include "webtraffic/_navbar.html" %}
+
+<div class="d-flex flex-column flex-md-row">
+
+<div class="d-flex flex-column flex-md-row offset-1 col-10 col-md-10 card border-0 shadow bb-card-2 my-5">
+
+<div class="offset-1 col-10 col-md-4 card border-0 shadow bb-card-2 my-5 mt-0 pt-4"  style="height: 200px">
+    <h2 class="bb-b">{{message}}</h2>
+    <p style="font-size: 1.5rem;">Choose the date range for which you would like to display data</p>
+    <form class="bb-form" action="" id="update-form" method="POST">
+      {% csrf_token %}
+    <div class="form-group">
+    <input type="date" class="datepicker" placeholder="Starting date..." name="date_start" value="2019-11-01" required>
+    </div>
+    <div class="form-group">
+    <input type="date" class="datepicker" placeholder="Ending date..." name="date_end" value="2019-12-01" required>
+    </div>
+     <button type="submit" class='btn btn-primary bb-btn'>Submit</button>
+   </form>
+</div>
+
+ <div class="offset-1 col-10 col-md-6 card border-0 shadow bb-card-2 my-5 mt-0 pt-2 bb-card-top"  style="height: 200px">
+    <p style="font-size: 1.5rem;">Use the dropdown menu: <strong>Show data views</strong> to navigate between the four example views (or return to home).</p>
+    <p style="font-size: 1.5rem;">Use datepicker to adjust the start and end dates for this report, but note the current dataset only
+     goes back to September 2019 so there is not much point in searching before then.</p>
+    <p style="font-size: 1.5rem;">Lots of other filtering options can be added to these pages, I have just put in the datepickers as an
+    example, but in pricipal you can sort the data in any way you want.</p>
+ </div>
+
+  </div>
+
+</div>
+
+
+
+   <div class="d-flex flex-column flex-md-row">
+
+     <div class="offset-1 col-10 col-md-4 card border-0 shadow bb-card-2 my-5"  style="height: 300px">
+        {{plot1.plot|safe}}
+        <p style="font-size: 1.5rem;">{{plot1.text}}</p>
+     </div>
+
+     <div class="offset-1 col-10 col-md-4 card border-0 shadow my-5 bb-card-2"  style="height: 300px">
+         {{plot2.plot|safe}}
+        <p style="font-size: 1.5rem;">{{plot2.text}}</p>
+     </div>
+
+   </div>
+
+   <div class="d-flex flex-column flex-md-row">
+
+     <div class="offset-1 col-10 col-md-4 card border-0 shadow bb-card-2 my-5"  style="height: 300px">
+        {{plot3.plot|safe}}
+        <p style="font-size: 1.5rem;">{{plot3.text}}</p>
+     </div>
+
+     <div class="offset-1 col-10 col-md-4 card border-0 shadow my-5 bb-card-2"  style="height: 300px">
+         {{plot4.plot|safe}}
+        <p style="font-size: 1.5rem;">{{plot4.text}}</p>
+     </div>
+
+   </div>
+
+
+{% endblock %}

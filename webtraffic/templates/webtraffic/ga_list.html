@@ -1,0 +1,75 @@
+{% extends "webtraffic/bb_base.html" %}
+{% load static %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+{% include "webtraffic/_navbar.html" %}
+
+<div class="d-flex flex-column flex-md-row">
+
+  <div class="offset-1 col-10 offset-md-2 col-md-8 border-0 shadow my-5">
+
+
+      <p>NOTE THIS PAGE NOT INTERESTING - (it is part of the site management)</p>
+    <a target=_blank" href="https://ga-dev-tools.appspot.com/dimensions-metrics-explorer/?hl=en_US#ga:socialInteractionAction">
+      <h2>Dimension Explorer</h2>
+    </a>
+
+  <form class="bb-form" action="" id="update-form2" method="POST">
+
+    {% csrf_token %}
+    <div class="d-flex flex-row">
+        <div>
+            <h2>Following dimensions are chosen</h2>
+            <ul class="list-unstyled">
+            {% for item in d_chosen %}
+              <li><input type="checkbox"  name="d_rem" value="{{item.name}}">{{item.name}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+
+        <div class='ml-5'>
+            <h2>Following metrics are chosen</h2>
+            <ul class="list-unstyled">
+            {% for item in m_chosen %}
+              <li><input type="checkbox"  name="m_rem" value="{{item.name}}">{{item.name}}</li>
+            {% endfor %}
+          </ul>
+        </div>
+    </div>
+    <button type="submit" class='btn btn-primary bb-btn' name='remove' value='true'>
+      Remove</button>
+  </form>
+
+<form class="bb-form" action="" id="update-form" method="POST">
+    {% csrf_token %}
+  <div class="d-flex flex-row">
+      <div>
+        <ul class="list-unstyled">
+          {% for dimension in dimensions %}
+            <li><input type="checkbox"  name="d_choice" value="{{dimension.name}}">{{dimension.name}}</li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class='ml-5'>
+        <ul class="list-unstyled">
+          {% for metric in metrics %}
+            <li><input type="checkbox"  name="m_choice" value="{{metric.name}}">{{metric.name}}</li>
+          {% endfor %}
+        </ul>
+      </div>
+  </div>
+  <button type="submit" class='btn btn-primary bb-btn' name='add' value='true'>
+    Add</button>
+  <button type="submit" class='btn btn-danger bb-btn' name='reset' value='true'>
+    Reset</button>
+</form>
+
+</div>
+
+</div>
+
+
+{% endblock %}

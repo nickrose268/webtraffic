@@ -1,0 +1,48 @@
+{% extends "webtraffic/bb_base.html" %}
+{% load static %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+{% include "webtraffic/_navbar.html" %}
+
+<div class="d-flex flex-column flex-md-row">
+
+  <div class="offset-1 col-10 col-md-4 card border-0 shadow my-5 bb-card-1"  style="height: 200px">
+    <a href="{% url 'webtraffic:view_show' view='traffic' %}">
+        <h1 class="font-weight-light text-center">Traffic Summary</h1>
+        <p>Click here for basic traffic information.</p>
+        <p>Number of vsitors, sessions, and page clicks on you site as a function of time.</p>
+    </a>
+  </div>
+
+  <div class="offset-1 col-10 col-md-4 card border-0 shadow my-5 bb-card-1"  style="height: 200px">
+    <a href="{% url 'webtraffic:view_show' view='site' %}">
+        <h1 class="font-weight-light text-center">User Behaviour</h1>
+        <p>Click here for information on how the users access and use your site.</p>
+        <p>Where do users come from ? Which page to they enter? Which page do they exit?</p>
+    </a>
+  </div>
+
+</div>
+
+<div class="d-flex flex-column flex-md-row">
+
+  <div class="offset-1 col-10 col-md-4 card border-0 shadow bb-card-1 my-5"  style="height: 200px">
+    <a href="{% url 'webtraffic:view_show' view='geo' %}">
+      <h1 class="font-weight-light text-center">Geography and Demographics</h1>
+      <p class="lead">Click here for information on where your users are located.</p>
+    </a>
+  </div>
+
+  <div class="offset-1 col-10 col-md-4 card border-0 shadow my-5 bb-card-1"  style="height: 200px">
+    <a href="{% url 'webtraffic:view_show' view='tech' %}">
+        <h1 class="font-weight-light text-center">User Equipment</h1>
+        <p>Click here for information on what equipment users are using to access your site.</p>
+        <p>Browsers, operating system, mobile devices etc.</p>
+    </a>
+  </div>
+
+</div>
+
+{% endblock %}

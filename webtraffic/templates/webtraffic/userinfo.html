@@ -1,0 +1,82 @@
+{% extends "webtraffic/bb_base.html" %}
+{% load static %}
+{% load bootstrap3 %}
+
+{% block content %}
+
+{% include "webtraffic/_navbar.html" %}
+
+<h1>This page shows the information that this site knows about you</h1>
+
+<div class="d-flex flex-column">
+
+  <div class='ml-2'>
+    <h2>You sent the following request</h2>
+    <p>{{userinfo.request}}
+    <h4>Your IP address appears to be {{userinfo.ip1}}</h4>
+    <h4>Possibly forwarded via {{userinfo.ip2}}</h4>
+    <h4>Your operating system is {{userinfo.os}}</h4>
+  </div>
+
+  <div class='ml-2'>
+    <h2>You have the following cookies visible to this site</h2>
+    <ul class="list-unstyled">
+      <div class="d-flex">
+      <span class="col-md-2 bb-b">Name</span>
+      <span class="col-md-2 bb-b">Value</span>
+      </div>
+      {% for result in userinfo.cookie %}
+        <li>
+          <div class="d-flex flex-column flex-md-row">
+          <span class="col-md-2 bb-b">{{result.0}}</span>
+          <span class="col-md-2">{{result.1}}</span>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class='ml-2'>
+    <h2>You have sent the following HTTP headers</h2>
+    <ul class="list-unstyled">
+      <div class="d-flex  flex-column flex-md-row">
+      <span class="col-md-2 bb-b">Name</span>
+      <span class="col-md-3 bb-b">Value</span>
+      </div>
+      {% for result in userinfo.header %}
+        <li>
+          <div class="d-flex  flex-column flex-md-row">
+          <span class="col-md-2 bb-b">{{result.0}}</span>
+          <span class="col-md-3">{{result.1}}</span>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+  <div class='ml-2'>
+    <h2>Here is all the information this site knows about you</h2>
+    <ul class="list-unstyled">
+      <div class="d-flex  flex-column flex-md-row">
+      <span class="col-md-3 bb-b">Name</span>
+      <span class="col-md-3 bb-b">Value</span>
+      </div>
+      {% for result in userinfo.meta %}
+        <li>
+          <div class="d-flex flex-column flex-md-row">
+          <span class="col-md-3 bb-b">{{result.0}}</span>
+          <span class="col-md-3">{{result.1}}</span>
+          </div>
+        </li>
+      {% endfor %}
+    </ul>
+  </div>
+
+</div>
+
+<a target=_blank" href="https://ga-dev-tools.appspot.com/dimensions-metrics-explorer/">
+  <h2>Click here to look at Google analytics dimensions and metrics</h2>
+</a>
+
+
+{% endblock %}
